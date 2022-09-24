@@ -1,6 +1,7 @@
 let canvasSize = 64;
 let drawing; 
 let canvas = document.getElementById("canvas-container");
+let clearBtn = document.getElementById("clear");
 
 for(let i = 0; i < canvasSize; i++){
   let newRow = document.createElement("div");
@@ -27,3 +28,9 @@ canvas.addEventListener("mouseup", function(){
   drawing = false;
 })
 
+clearBtn.addEventListener("click", function(){
+  let boxes = Array.from(document.querySelectorAll(".box"));
+  boxes.forEach(function(e){
+    e.classList.remove("filled");
+  })
+})
