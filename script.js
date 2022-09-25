@@ -8,8 +8,42 @@ let eraseBtn = document.getElementById("erase");
 let sizeBtn = document.getElementById("resize");
 let canvasSize = 64;
 
+
+function resizeGrid(){
+  console.log(`in resizeGrid`);
+  drawing = false;
+  erasing = false;
+  removeGrid(); 
+  canvasSize = prompt("How many pixels per side?");
+  buildGrid(canvasSize);
+}
+
+function removeGrid(){
+  console.log(`in removeGrid`);
+  while (canvas.firstChild){
+    canvas.removeChild(canvas.firstChild);
+  } 
+}
+
 function buildGrid(size){
- 
+  for(let i = 0; i < size; i++){
+    let newRow = document.createElement("div");
+    newRow.classList.add("row");
+    for(let j = 0; j < size; j++){
+      let newBox = document.createElement("div")
+      newBox.classList.add("box");
+      newBox.addEventListener("mouseover", function(){
+        if(drawing === true){
+          newBox.classList.add("filled"); 
+        }
+        else if(erasing === true){
+          newBox.classList.remove("filled");
+        }
+      })
+      newRow.appendChild(newBox);
+    }
+    canvas.appendChild(newRow);
+  }
 }
 
 function clearGrid(){
@@ -58,7 +92,6 @@ for(let i = 0; i < canvasSize; i++){
   for(let j = 0; j < canvasSize; j++){
     let newBox = document.createElement("div")
     newBox.classList.add("box");
-    // newBox.classList.add("filled");
     newBox.addEventListener("mouseover", function(){
       if(drawing === true){
         newBox.classList.add("filled"); 
@@ -74,34 +107,6 @@ for(let i = 0; i < canvasSize; i++){
 
 drawBtn.addEventListener("click", chooseDraw);
 eraseBtn.addEventListener("click", chooseErase);
-
 clearBtn.addEventListener("click", clearGrid);
-
-sizeBtn.addEventListener("click", function(){
-  drawing = false;
-  erasing = false;
-  canvasSize = prompt("How many pixels per side?");
-  while (canvas.firstChild){
-    canvas.removeChild(canvas.firstChild);
-  } 
-  for(let i = 0; i < canvasSize; i++){
-    let newRow = document.createElement("div");
-    newRow.classList.add("row");
-    for(let j = 0; j < canvasSize; j++){
-      let newBox = document.createElement("div")
-      newBox.classList.add("box");
-      // newBox.classList.add("filled");
-      newBox.addEventListener("mouseover", function(){
-        if(drawing === true){
-          newBox.classList.add("filled"); 
-        }
-        else if(erasing === true){
-          newBox.classList.remove("filled");
-        }
-      })
-      newRow.appendChild(newBox);
-    }
-    canvas.appendChild(newRow);
-  }
-})
+sizeBtn.addEventListener("click", resizeGrid); 
 
