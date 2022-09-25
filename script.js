@@ -59,6 +59,8 @@ clearBtn.addEventListener("click", function(){
 })
 
 sizeBtn.addEventListener("click", function(){
+  drawing = false;
+  erasing = false;
   canvasSize = prompt("How many pixels per side?");
   while (canvas.firstChild){
     canvas.removeChild(canvas.firstChild);
