@@ -51,6 +51,10 @@ function clearGrid(){
   boxes.forEach(function(e){
     e.classList.remove("filled");
   })
+  canvas.removeEventListener("mousedown", startDraw);
+  canvas.removeEventListener("mouseup", stopDraw);
+  canvas.removeEventListener("mousedown", startErase);
+  canvas.removeEventListener("mouseup", stopErase);
 }
 
 function startDraw() {
