@@ -15,14 +15,12 @@ for(let i = 0; i < canvasSize; i++){
     newBox.classList.add("box");
     // newBox.classList.add("filled");
     newBox.addEventListener("mouseover", function(){
-      console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
       if(drawing === true){
         newBox.classList.add("filled"); 
       }
       else if(erasing === true){
         newBox.classList.remove("filled");
       }
-      
     })
     newRow.appendChild(newBox);
   }
@@ -30,28 +28,26 @@ for(let i = 0; i < canvasSize; i++){
 }
 
 drawBtn.addEventListener("click", function(){
-  console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
   canvas.addEventListener("mousedown", function(){
     erasing = false;
     drawing = true;
-    console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
+
   })
   canvas.addEventListener("mouseup", function(){
     drawing = false;
-    console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
+
   })
 })
 
 eraseBtn.addEventListener("click", function(){
-  console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
   canvas.addEventListener("mousedown", function(){
     drawing = false;
     erasing = true;
-    console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
+
   })
   canvas.addEventListener("mouseup", function(){
     erasing = false;
-    console.log(`drawing = ${drawing}, erasing = ${erasing}`); 
+
   })
 })
 
