@@ -19,6 +19,7 @@ body {
   align-items: center;
   width: 600px; 
   margin-top: 100px; 
+  gap: 10px;
 }
 
 #canvas-container {
@@ -33,10 +34,12 @@ body {
 .row {
   display: flex;
   flex: 1;
+  border-bottom: 0.5px solid #999;
 }
 
 .box {
   flex: 1;
+  border-right: 0.5px solid #999;
 }
 
 .filled {
@@ -59,6 +62,21 @@ button {
   #canvas-container {
     width: 400px;
     height: 400px;
+    margin-top: 50px;
+  }
+
+  body {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  #controls {
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    margin-top: 0;
   }
 }
 
@@ -66,5 +84,20 @@ button {
   #canvas-container {
     width: 300px;
     height: 300px;
+    margin-top: 50px;
+  }
+
+  body {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  #controls {
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    margin-top: 0;
   }
 }
