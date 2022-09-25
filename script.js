@@ -8,6 +8,38 @@ let eraseBtn = document.getElementById("erase");
 let sizeBtn = document.getElementById("resize");
 let canvasSize = 64;
 
+function startDraw() {
+  console.log(`in startDraw`);
+  erasing = false;
+  drawing = true;
+}
+
+function stopDraw() {
+  drawing = false;
+}
+
+function startErase() {
+  drawing = false;
+  erasing = true;
+}
+
+function stopErase() {
+  erasing = false;
+}
+
+function chooseDraw() {
+  console.log(`in chooseDraw`);
+  canvas.addEventListener("mousedown", startDraw);
+  canvas.addEventListener("mouseup", stopDraw);
+}
+
+function chooseErase() {
+  canvas.addEventListener("mousedown", startErase);
+  canvas.addEventListener("mouseup", stopErase);
+}
+
+
+
 
 for(let i = 0; i < canvasSize; i++){
   let newRow = document.createElement("div");
@@ -29,27 +61,8 @@ for(let i = 0; i < canvasSize; i++){
   canvas.appendChild(newRow);
 }
 
-drawBtn.addEventListener("click", function(){
-  canvas.addEventListener("mousedown", function(){
-    erasing = false;
-    drawing = true;
-
-  })
-  canvas.addEventListener("mouseup", function(){
-    drawing = false;
-  })
-})
-
-eraseBtn.addEventListener("click", function(){
-  canvas.addEventListener("mousedown", function(){
-    drawing = false;
-    erasing = true;
-  })
-  canvas.addEventListener("mouseup", function(){
-    erasing = false;
-
-  })
-})
+drawBtn.addEventListener("click", chooseDraw);
+eraseBtn.addEventListener("click", chooseErase);
 
 clearBtn.addEventListener("click", function(){
   let boxes = Array.from(document.querySelectorAll(".box"));
