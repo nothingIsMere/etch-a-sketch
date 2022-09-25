@@ -6,6 +6,7 @@ let clearBtn = document.getElementById("clear");
 let drawBtn = document.getElementById("draw");
 let eraseBtn = document.getElementById("erase");
 let sizeBtn = document.getElementById("resize");
+let instructions = document.getElementById("instructions");
 let canvasSize = 64;
 
 function reset(){
@@ -80,11 +81,19 @@ function stopErase() {
 function chooseDraw() {
   canvas.addEventListener("mousedown", startDraw);
   canvas.addEventListener("mouseup", stopDraw);
+  while (instructions.firstChild){
+    instructions.removeChild(instructions.firstChild);
+  } 
+  instructions.textContent = "To start drawing, click anywhere on canvas.";
 }
 
 function chooseErase() {
   canvas.addEventListener("mousedown", startErase);
   canvas.addEventListener("mouseup", stopErase);
+  while (instructions.firstChild){
+    instructions.removeChild(instructions.firstChild);
+  } 
+  instructions.textContent = "To start erasing, click anywhere on canvas.";
 }
 
 

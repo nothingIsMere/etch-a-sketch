@@ -11,6 +11,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #controls {
@@ -57,12 +58,15 @@ button {
   font-size: 1.4rem;
 }
 
+#instructions {
+  font-size: 1.6em;  
+}
+
 /* Media queries */
 @media (max-width: 850px){
   #canvas-container {
     width: 400px;
     height: 400px;
-    margin-top: 50px;
   }
 
   body {
@@ -77,6 +81,10 @@ button {
     align-items: center;
     gap: 15px;
     margin-top: 0;
+  }
+
+  #instructions {
+    font-size: 1.6em;  
   }
 }
 
@@ -84,7 +92,6 @@ button {
   #canvas-container {
     width: 300px;
     height: 300px;
-    margin-top: 50px;
   }
 
   body {
@@ -99,5 +106,12 @@ button {
     align-items: center;
     gap: 15px;
     margin-top: 0;
+  }
+
+  #instructions {
+    font-size: 1.2em;
+    margin-top: 15px;
+    text-align: center; 
+    max-width: 300px; 
   }
 }
