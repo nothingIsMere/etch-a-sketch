@@ -35,7 +35,6 @@ drawBtn.addEventListener("click", function(){
   })
   canvas.addEventListener("mouseup", function(){
     drawing = false;
-
   })
 })
 
@@ -43,7 +42,6 @@ eraseBtn.addEventListener("click", function(){
   canvas.addEventListener("mousedown", function(){
     drawing = false;
     erasing = true;
-
   })
   canvas.addEventListener("mouseup", function(){
     erasing = false;
