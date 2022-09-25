@@ -8,9 +8,15 @@ let eraseBtn = document.getElementById("erase");
 let sizeBtn = document.getElementById("resize");
 let canvasSize = 64;
 
+function reset(){
+  canvas.removeEventListener("mousedown", startDraw);
+  canvas.removeEventListener("mouseup", stopDraw);
+  canvas.removeEventListener("mousedown", startErase);
+  canvas.removeEventListener("mouseup", stopErase);
+}
 
 function resizeGrid(){
-  console.log(`in resizeGrid`);
+  reset();
   drawing = false;
   erasing = false;
   removeGrid(); 
@@ -19,7 +25,6 @@ function resizeGrid(){
 }
 
 function removeGrid(){
-  console.log(`in removeGrid`);
   while (canvas.firstChild){
     canvas.removeChild(canvas.firstChild);
   } 
@@ -51,14 +56,10 @@ function clearGrid(){
   boxes.forEach(function(e){
     e.classList.remove("filled");
   })
-  canvas.removeEventListener("mousedown", startDraw);
-  canvas.removeEventListener("mouseup", stopDraw);
-  canvas.removeEventListener("mousedown", startErase);
-  canvas.removeEventListener("mouseup", stopErase);
+  reset();
 }
 
 function startDraw() {
-  console.log(`in startDraw`);
   erasing = false;
   drawing = true;
 }
@@ -77,7 +78,6 @@ function stopErase() {
 }
 
 function chooseDraw() {
-  console.log(`in chooseDraw`);
   canvas.addEventListener("mousedown", startDraw);
   canvas.addEventListener("mouseup", stopDraw);
 }
