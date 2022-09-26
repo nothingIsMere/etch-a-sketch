@@ -53,6 +53,8 @@ function buildGrid(size){
 }
 
 function clearGrid(){
+  drawBtn.style.backgroundColor = "#666";
+  eraseBtn.style.backgroundColor = "#666";
   let boxes = Array.from(document.querySelectorAll(".box"));
   boxes.forEach(function(e){
     e.classList.remove("filled");
@@ -79,6 +81,8 @@ function stopErase() {
 }
 
 function chooseDraw() {
+  drawBtn.style.backgroundColor = "black";
+  eraseBtn.style.backgroundColor = "#666";
   canvas.addEventListener("mousedown", startDraw);
   canvas.addEventListener("mouseup", stopDraw);
   while (instructions.firstChild){
@@ -88,6 +92,8 @@ function chooseDraw() {
 }
 
 function chooseErase() {
+  eraseBtn.style.backgroundColor = "black";
+  drawBtn.style.backgroundColor = "#666";
   canvas.addEventListener("mousedown", startErase);
   canvas.addEventListener("mouseup", stopErase);
   while (instructions.firstChild){
