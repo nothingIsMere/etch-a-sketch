@@ -14,6 +14,11 @@ function reset(){
   canvas.removeEventListener("mouseup", stopDraw);
   canvas.removeEventListener("mousedown", startErase);
   canvas.removeEventListener("mouseup", stopErase);
+  while (instructions.firstChild){
+    instructions.removeChild(instructions.firstChild);
+  }
+  drawBtn.style.backgroundColor = "#666";
+  eraseBtn.style.backgroundColor = "#666"; 
 }
 
 function resizeGrid(){
@@ -53,8 +58,6 @@ function buildGrid(size){
 }
 
 function clearGrid(){
-  drawBtn.style.backgroundColor = "#666";
-  eraseBtn.style.backgroundColor = "#666";
   let boxes = Array.from(document.querySelectorAll(".box"));
   boxes.forEach(function(e){
     e.classList.remove("filled");
