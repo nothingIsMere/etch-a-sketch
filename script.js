@@ -85,6 +85,8 @@ function chooseDraw() {
   eraseBtn.style.backgroundColor = "#666";
   canvas.addEventListener("mousedown", startDraw);
   canvas.addEventListener("mouseup", stopDraw);
+  canvas.removeEventListener("mousedown", startErase);
+  canvas.removeEventListener("mouseup", stopErase)
   while (instructions.firstChild){
     instructions.removeChild(instructions.firstChild);
   } 
@@ -96,14 +98,13 @@ function chooseErase() {
   drawBtn.style.backgroundColor = "#666";
   canvas.addEventListener("mousedown", startErase);
   canvas.addEventListener("mouseup", stopErase);
+  canvas.removeEventListener("mousedown", startDraw);
+  canvas.removeEventListener("mouseup", stopDraw);
   while (instructions.firstChild){
     instructions.removeChild(instructions.firstChild);
   } 
   instructions.textContent = "To start erasing, click anywhere on canvas.";
 }
-
-
-
 
 for(let i = 0; i < canvasSize; i++){
   let newRow = document.createElement("div");
